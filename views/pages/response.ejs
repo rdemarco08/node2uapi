@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<ul>
+
+    <% for (var k = 0; k < solutions.length; k++) { %>
+    	 	<% if(solutions[k].Journey.AirSegmentRef instanceof Array) {%>
+    	 		<% for (var j = 0; j < solutions[k].Journey.AirSegmentRef.length; j++) {%>
+    	 			<% for (var i = 0; i < segments.length; i++) {%>
+    	 				<% if(solutions[k].Journey.AirSegmentRef[j].$attributes.Key == segments[i].$attributes.Key) {%>
+        					<li><img src='https://goprivate.wspan.com/sharedservices/images/airlineimages/logoAir<%= segments[i].$attributes.Carrier %>.gif' alt='Aireline logo'/>
+        					<%= segments[i].$attributes.Carrier %>
+        					Flight Number: <%= segments[i].$attributes.FlightNumber %> 
+        					Origin: <%= segments[i].$attributes.Origin %> 
+        					Destination: <%= segments[i].$attributes.Destination %>
+        					Departure: <%= segments[i].$attributes.DeparturTime %>
+        					Arrival: <%= segments[i].$attributes.ArrivalTime %> 
+        					Price: <%= solutions[k].$attributes.TotalPrice %></li>
+        				<% } %>
+    	 			<% } %>
+    	 		<% } %>
+    		<% } else {%>
+    			<% for (var i = 0; i < segments.length; i++) {%>
+    	 			<% if(solutions[k].Journey.AirSegmentRef.$attributes.Key == segments[i].$attributes.Key) {%>
+        				<li><img src='https://goprivate.wspan.com/sharedservices/images/airlineimages/logoAir<%= segments[i].$attributes.Carrier %>.gif' alt='Aireline logo'/>
+        					<%= segments[i].$attributes.Carrier %>
+        					Flight Number: <%= segments[i].$attributes.FlightNumber %> 
+        					Origin: <%= segments[i].$attributes.Origin %> 
+        					Destination: <%= segments[i].$attributes.Destination %>
+        					Departure: <%= segments[i].$attributes.DeparturTime %>
+        					Arrival: <%= segments[i].$attributes.ArrivalTime %> 
+        					Price: <%= solutions[k].$attributes.TotalPrice %></li>
+        			<% } %>
+    	 		<% } %>
+    		<% } %>
+    <% } %>
+</ul>
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>

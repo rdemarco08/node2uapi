@@ -1,0 +1,44 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main>
+    <form action="http://demarcotvpt-eval-test.apigee.net/apigee/node/searchflights/search" method="post">
+        <div class="form-group">
+    	   <label for="origin">Origin: </label>
+    	   <input class="form-control" id="origin" type="text" name="origin" value="" placeholder="DEN">
+        </div>
+        <div class="form-group">
+    	   <label for="destination">Destination: </label>
+    	   <input class="form-control" id="destination" type="text" name="destination" value="" placeholder="SFO">
+        </div>
+        <div class="form-group">
+    	   <label for="date">Departure Date: </label>
+    	   <input class="form-control" id="date" type="text" name="date" value="" placeholder="YYYY-MM-DD">
+        <div class="form-group">
+    	   <label for="ptc">PTC: </label>
+    	   <input class="form-control" id="ptc" type="text" name="ptc" value="ADT">
+        </div>
+        <div class="form-group">
+    	   <label for="core">Core: </label>
+    	   <input class="form-control" id="core" type="text" name="core" value="1G">
+        </div>
+    	<input type="submit" value="SUBMIT">
+	</form>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>
