@@ -9,38 +9,42 @@
     <% include ../partials/header %>
 </header>
 
-<ul>
+<ul class="list-group">
 
     <% for (var k = 0; k < solutions.length; k++) { %>
-    	 	<% if(solutions[k].Journey.AirSegmentRef instanceof Array) {%>
-    	 		<% for (var j = 0; j < solutions[k].Journey.AirSegmentRef.length; j++) {%>
-    	 			<% for (var i = 0; i < segments.length; i++) {%>
-    	 				<% if(solutions[k].Journey.AirSegmentRef[j].$attributes.Key == segments[i].$attributes.Key) {%>
-        					<li><img src='https://goprivate.wspan.com/sharedservices/images/airlineimages/logoAir<%= segments[i].$attributes.Carrier %>.gif' alt='Aireline logo'/>
+	 	<% if(solutions[k].Journey.AirSegmentRef instanceof Array) {%>
+	 		<% for (var j = 0; j < solutions[k].Journey.AirSegmentRef.length; j++) {%>
+	 			<% for (var i = 0; i < segments.length; i++) {%>
+	 				<% if(solutions[k].Journey.AirSegmentRef[j].$attributes.Key == segments[i].$attributes.Key) {%>
+    					<li class="list-group-item">
+                            <img src='https://goprivate.wspan.com/sharedservices/images/airlineimages/logoAir<%= segments[i].$attributes.Carrier %>.gif' alt='Aireline logo' width="45" height="30"/>
         					<%= segments[i].$attributes.Carrier %>
         					Flight Number: <%= segments[i].$attributes.FlightNumber %> 
         					Origin: <%= segments[i].$attributes.Origin %> 
         					Destination: <%= segments[i].$attributes.Destination %>
         					Departure: <%= segments[i].$attributes.DeparturTime %>
         					Arrival: <%= segments[i].$attributes.ArrivalTime %> 
-        					Price: <%= solutions[k].$attributes.TotalPrice %></li>
-        				<% } %>
-    	 			<% } %>
-    	 		<% } %>
-    		<% } else {%>
-    			<% for (var i = 0; i < segments.length; i++) {%>
-    	 			<% if(solutions[k].Journey.AirSegmentRef.$attributes.Key == segments[i].$attributes.Key) {%>
-        				<li><img src='https://goprivate.wspan.com/sharedservices/images/airlineimages/logoAir<%= segments[i].$attributes.Carrier %>.gif' alt='Aireline logo'/>
-        					<%= segments[i].$attributes.Carrier %>
-        					Flight Number: <%= segments[i].$attributes.FlightNumber %> 
-        					Origin: <%= segments[i].$attributes.Origin %> 
-        					Destination: <%= segments[i].$attributes.Destination %>
-        					Departure: <%= segments[i].$attributes.DeparturTime %>
-        					Arrival: <%= segments[i].$attributes.ArrivalTime %> 
-        					Price: <%= solutions[k].$attributes.TotalPrice %></li>
-        			<% } %>
-    	 		<% } %>
-    		<% } %>
+        					Price: <%= solutions[k].$attributes.TotalPrice %>
+                        </li>
+            		<% } %>
+	 			<% } %>
+	 		<% } %>
+		<% } else {%>
+			<% for (var i = 0; i < segments.length; i++) {%>
+	 			<% if(solutions[k].Journey.AirSegmentRef.$attributes.Key == segments[i].$attributes.Key) {%>
+    				<li class="list-group-item">
+                        <img src='https://goprivate.wspan.com/sharedservices/images/airlineimages/logoAir<%= segments[i].$attributes.Carrier %>.gif' alt='Aireline logo' width="45" height="30"/>
+    					<%= segments[i].$attributes.Carrier %>
+    					Flight Number: <%= segments[i].$attributes.FlightNumber %> 
+    					Origin: <%= segments[i].$attributes.Origin %> 
+    					Destination: <%= segments[i].$attributes.Destination %>
+    					Departure: <%= segments[i].$attributes.DeparturTime %>
+    					Arrival: <%= segments[i].$attributes.ArrivalTime %> 
+    					Price: <%= solutions[k].$attributes.TotalPrice %>
+                    </li>
+    			<% } %>
+	 		<% } %>
+		<% } %>
     <% } %>
 </ul>
 <footer>

@@ -5,40 +5,66 @@
 <head>
     <% include ../partials/head %>
 </head>
-<body class="container">
+    <body class="container">
 
-<header>
-    <% include ../partials/header %>
-</header>
+        <header>
+            <% include ../partials/header %>
+        </header>
 
-<main>
-    <form action="http://demarcotvpt-eval-test.apigee.net/apigee/node/searchflights/search" method="post">
-        <div class="form-group">
-    	   <label for="origin">Origin: </label>
-    	   <input class="form-control" id="origin" type="text" name="origin" value="" placeholder="DEN">
-        </div>
-        <div class="form-group">
-    	   <label for="destination">Destination: </label>
-    	   <input class="form-control" id="destination" type="text" name="destination" value="" placeholder="SFO">
-        </div>
-        <div class="form-group">
-    	   <label for="date">Departure Date: </label>
-    	   <input class="form-control" id="date" type="text" name="date" value="" placeholder="YYYY-MM-DD">
-        <div class="form-group">
-    	   <label for="ptc">PTC: </label>
-    	   <input class="form-control" id="ptc" type="text" name="ptc" value="ADT">
-        </div>
-        <div class="form-group">
-    	   <label for="core">Core: </label>
-    	   <input class="form-control" id="core" type="text" name="core" value="1G">
-        </div>
-    	<input type="submit" value="SUBMIT">
-	</form>
-</main>
+        <main>
+            <form action="http://demarcotvpt-eval-test.apigee.net/apigee/node/searchflights/search" method="post">
+                <div class="form-group">
+            	   <label for="origin">Origin: </label>
+            	   <input class="form-control" id="origin" type="text" name="origin" value="" placeholder="DEN">
+                </div>
+                <div class="form-group">
+            	   <label for="destination">Destination: </label>
+            	   <input class="form-control" id="destination" type="text" name="destination" value="" placeholder="SFO">
+                </div>
+                <div class="form-group">
+            	   <label for="date">Departure Date: </label>
+            	   <input class="form-control" id="date" type="text" name="date" value="" placeholder="YYYY-MM-DD">
+                </div>
+                <div class="form-group">
+            	   <label for="ptc">PTC: </label>
+            	   <input class="form-control" id="ptc" type="text" name="ptc" value="ADT">
+                </div>
+                <div class="form-group">
+            	   <label for="core">Core: </label>
+            	   <input class="form-control" id="core" type="text" name="core" value="1G">
+                </div>
+            	<input type="submit" value="SUBMIT">
+            </form>
+            <% if(errors){ %> 
+                <ul>
+                <% errors.forEach(function( err){ %>
+                    <li> <%= err.msg %> </li>
+                <% }) %>
+                </ul>
+            <%} %> 
+        </main>
 
-<footer>
-    <% include ../partials/footer %>
-</footer>
+        <footer>
+            <% include ../partials/footer %>
+        </footer>
 
-</body>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+        <script>
+        $(document).ready(function() {
+            $("#date").datepicker({
+                minDate: 0,
+                maxDate: "+11M +10D",
+                dateFormat: "yy-mm-dd"
+            });
+            $("button").click(function() {
+                var departing = $("#date").val();
+                if (departing === "") {
+                    alert("Please select departing dates.");
+                } 
+            });
+        });
+        </script>
+    </body>
 </html>
