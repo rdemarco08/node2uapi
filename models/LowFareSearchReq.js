@@ -2,8 +2,8 @@ module.exports = {
   LowFareSearchReq:{
   		$attributes:{
   			SolutionResult:'true',
-  			TargetBranch:'P7093065',
-  			TraceId:'richard_trace'
+  			TargetBranch:'PROVISIONED_BRANCH_ID',
+  			TraceId:'unique_trace_key'
   		},
       	BillingPointOfSaleInfo:{
          $attributes:{
