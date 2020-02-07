@@ -11,7 +11,7 @@
     "body-parser": "1.18.2",
   	"strong-globalize": "2.8.0",
     "strong-soap": "1.2.6",
-    "npm": "1.4.28",
+    "npm": "6.13.7",
     "trireme": "0.9.1",
   	"express-validator": "2.18.0"
   },
