@@ -9,6 +9,6 @@ Make sure the node_modules that get installed match the versions in the main pac
 
 Apigee uses a runtime module named trireme that uses a Java Virtual Machine to run your node app.
 
-New modules relying on node 4.0 will not work in the Apigee environment 
+New modules relying on node 4.0 will not work in the Apigee environment. 
 
 I made sure all my modules were compatible with Node 0.10.32 by checking: https://registry.npmjs.org/<module_name>
